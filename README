@@ -1,0 +1,32 @@
+JSONRequest
+
+JSONReqest提供一个简单的获取JSON对象的方法。
+
+
+例子
+
+
+    @interface MyObject : NSObject <JSONRequestDelegate>
+    @end
+
+    @implementation MyObject
+    - (void)getObjectFromURL:(NSURL *)URL
+    {
+            JSONRequest *request = [JSONRequest requestWithURL:URL];
+            request.delegate = self;
+            [request setValue:@"20" forParamKey:@"count"];
+            [request send];
+    }
+
+    - (void)requestFinished:(JSONRequest *)request
+    {
+            id rootObject = request.response.rootObject;
+            // ...
+    }
+
+    - (void)requestFailed:(JSONRequest *)request
+    {
+           // ...                                
+    }
+    @end
+
