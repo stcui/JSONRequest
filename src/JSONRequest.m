@@ -45,6 +45,13 @@ static NSOperationQueue *s_requestQueue = nil;;
     return request;
 }
 
++ (void)setMaxConcurrentRequestCount:(NSInteger)count
+{
+    @synchronized(s_requestQueue) {
+        [s_requestQueue setMaxConcurrentOperationCount:count];
+    }
+}
+
 - (id)initWithURL:(NSURL *)URL cachePolicy:(NSURLRequestCachePolicy)cachePolicy timeoutInterval:(NSTimeInterval)timeoutInterval
 {
     self = [super init];
@@ -82,6 +89,7 @@ static NSOperationQueue *s_requestQueue = nil;;
     [_paramString release];
     [_data release];
     [_response release];
+    [_sentDate release];
     [super dealloc];
 }
 
@@ -184,6 +192,10 @@ static NSOperationQueue *s_requestQueue = nil;;
     }
 }
 
+- (NSDate *)sentDate
+{
+    return _sentDate;
+}
 #pragma mark - NSOperation
 - (void)start
 {
@@ -313,6 +325,7 @@ static NSOperationQueue *s_requestQueue = nil;;
 
 - (void)send
 {
+    _sentDate = [[NSDate alloc] init];
     [self retain];
     _request.HTTPMethod = self.HTTPMethod;
     if ([self isPostMethod]) {

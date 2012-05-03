@@ -24,6 +24,7 @@
     NSString *_paramString;
     JSONResponse *_response;
     NSError *_error;
+    NSDate *_sentDate;
 }
 @property (nonatomic, assign) NSObject<JSONRequestDelegate> *delegate;
 @property (nonatomic, retain) NSString *HTTPMethod;
@@ -31,12 +32,14 @@
 @property (nonatomic, readonly) JSONResponse *response;
 @property (nonatomic, readonly) NSError *error;
 + (id)requestWithURL:(NSURL *)URL;
++ (void)setMaxConcurrentRequestCount:(NSInteger)count;
 - (id)initWithURL:(NSURL *)URL;
 - (id)initWithURL:(NSURL *)URL cachePolicy:(NSURLRequestCachePolicy)cachePolicy timeoutInterval:(NSTimeInterval)timeoutInterval;
 - (void)setValue:(NSString *)param forParamKey:(NSString *)key;
 - (void)send;
 - (NSURL *)url;
 - (NSURL *)URL;
+- (NSDate *)sentDate;
 @end
 
 @protocol JSONRequestDelegate <NSObject>

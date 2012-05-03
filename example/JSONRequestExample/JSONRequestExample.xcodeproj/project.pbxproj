@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0A0624615521DFF00534BB5 /* Descriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A0624515521DFF00534BB5 /* Descriptor.m */; };
 		A0B9CA7715513FC800DB2A23 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B9CA7615513FC800DB2A23 /* UIKit.framework */; };
 		A0B9CA7915513FC800DB2A23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B9CA7815513FC800DB2A23 /* Foundation.framework */; };
 		A0B9CA7B15513FC800DB2A23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B9CA7A15513FC800DB2A23 /* CoreGraphics.framework */; };
@@ -16,11 +17,8 @@
 		A0B9CA8A15513FC800DB2A23 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B9CA8915513FC800DB2A23 /* FirstViewController.m */; };
 		A0B9CA8C15513FC800DB2A23 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = A0B9CA8B15513FC800DB2A23 /* first.png */; };
 		A0B9CA8E15513FC800DB2A23 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A0B9CA8D15513FC800DB2A23 /* first@2x.png */; };
-		A0B9CA9115513FC800DB2A23 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B9CA9015513FC800DB2A23 /* SecondViewController.m */; };
 		A0B9CA9315513FC800DB2A23 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = A0B9CA9215513FC800DB2A23 /* second.png */; };
 		A0B9CA9515513FC800DB2A23 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A0B9CA9415513FC800DB2A23 /* second@2x.png */; };
-		A0B9CA9815513FC800DB2A23 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0B9CA9615513FC800DB2A23 /* FirstViewController.xib */; };
-		A0B9CA9B15513FC800DB2A23 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0B9CA9915513FC800DB2A23 /* SecondViewController.xib */; };
 		A0B9CAAC1551401600DB2A23 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B9CA7815513FC800DB2A23 /* Foundation.framework */; };
 		A0B9CAB61551402200DB2A23 /* JSONRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B9CAA315513FF700DB2A23 /* JSONRequest.m */; };
 		A0B9CAB71551402200DB2A23 /* JSONResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A0B9CAA515513FF700DB2A23 /* JSONResponse.m */; };
@@ -40,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A0A0624415521DFF00534BB5 /* Descriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Descriptor.h; sourceTree = "<group>"; };
+		A0A0624515521DFF00534BB5 /* Descriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Descriptor.m; sourceTree = "<group>"; };
 		A0B9CA7215513FC800DB2A23 /* JSONRequestExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONRequestExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0B9CA7615513FC800DB2A23 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A0B9CA7815513FC800DB2A23 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -54,12 +54,8 @@
 		A0B9CA8915513FC800DB2A23 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		A0B9CA8B15513FC800DB2A23 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		A0B9CA8D15513FC800DB2A23 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		A0B9CA8F15513FC800DB2A23 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		A0B9CA9015513FC800DB2A23 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		A0B9CA9215513FC800DB2A23 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		A0B9CA9415513FC800DB2A23 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		A0B9CA9715513FC800DB2A23 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController.xib; sourceTree = "<group>"; };
-		A0B9CA9A15513FC800DB2A23 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController.xib; sourceTree = "<group>"; };
 		A0B9CAA215513FF700DB2A23 /* JSONRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JSONRequest.h; path = ../../src/JSONRequest.h; sourceTree = "<group>"; };
 		A0B9CAA315513FF700DB2A23 /* JSONRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = JSONRequest.m; path = ../../src/JSONRequest.m; sourceTree = "<group>"; };
 		A0B9CAA415513FF700DB2A23 /* JSONResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JSONResponse.h; path = ../../src/JSONResponse.h; sourceTree = "<group>"; };
@@ -93,10 +89,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A0A062421552184F00534BB5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A0B9CA8B15513FC800DB2A23 /* first.png */,
+				A0B9CA8D15513FC800DB2A23 /* first@2x.png */,
+				A0B9CA9215513FC800DB2A23 /* second.png */,
+				A0B9CA9415513FC800DB2A23 /* second@2x.png */,
+			);
+			name = Resources;
+			path = JSONRequestExample;
+			sourceTree = "<group>";
+		};
 		A0B9CA6715513FC700DB2A23 = {
 			isa = PBXGroup;
 			children = (
 				A0B9CA7C15513FC800DB2A23 /* JSONRequestExample */,
+				A0A062421552184F00534BB5 /* Resources */,
 				A0B9CA7515513FC800DB2A23 /* Frameworks */,
 				A0B9CAA115513FED00DB2A23 /* Vendor */,
 				A0B9CA7315513FC800DB2A23 /* Products */,
@@ -125,18 +134,12 @@
 		A0B9CA7C15513FC800DB2A23 /* JSONRequestExample */ = {
 			isa = PBXGroup;
 			children = (
+				A0A0624415521DFF00534BB5 /* Descriptor.h */,
+				A0A0624515521DFF00534BB5 /* Descriptor.m */,
 				A0B9CA8515513FC800DB2A23 /* AppDelegate.h */,
 				A0B9CA8615513FC800DB2A23 /* AppDelegate.m */,
 				A0B9CA8815513FC800DB2A23 /* FirstViewController.h */,
 				A0B9CA8915513FC800DB2A23 /* FirstViewController.m */,
-				A0B9CA8B15513FC800DB2A23 /* first.png */,
-				A0B9CA8D15513FC800DB2A23 /* first@2x.png */,
-				A0B9CA8F15513FC800DB2A23 /* SecondViewController.h */,
-				A0B9CA9015513FC800DB2A23 /* SecondViewController.m */,
-				A0B9CA9215513FC800DB2A23 /* second.png */,
-				A0B9CA9415513FC800DB2A23 /* second@2x.png */,
-				A0B9CA9615513FC800DB2A23 /* FirstViewController.xib */,
-				A0B9CA9915513FC800DB2A23 /* SecondViewController.xib */,
 				A0B9CA7D15513FC800DB2A23 /* Supporting Files */,
 			);
 			path = JSONRequestExample;
@@ -269,8 +272,6 @@
 				A0B9CA8E15513FC800DB2A23 /* first@2x.png in Resources */,
 				A0B9CA9315513FC800DB2A23 /* second.png in Resources */,
 				A0B9CA9515513FC800DB2A23 /* second@2x.png in Resources */,
-				A0B9CA9815513FC800DB2A23 /* FirstViewController.xib in Resources */,
-				A0B9CA9B15513FC800DB2A23 /* SecondViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +285,7 @@
 				A0B9CA8315513FC800DB2A23 /* main.m in Sources */,
 				A0B9CA8715513FC800DB2A23 /* AppDelegate.m in Sources */,
 				A0B9CA8A15513FC800DB2A23 /* FirstViewController.m in Sources */,
-				A0B9CA9115513FC800DB2A23 /* SecondViewController.m in Sources */,
+				A0A0624615521DFF00534BB5 /* Descriptor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,22 +316,6 @@
 				A0B9CA8015513FC800DB2A23 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		A0B9CA9615513FC800DB2A23 /* FirstViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A0B9CA9715513FC800DB2A23 /* en */,
-			);
-			name = FirstViewController.xib;
-			sourceTree = "<group>";
-		};
-		A0B9CA9915513FC800DB2A23 /* SecondViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A0B9CA9A15513FC800DB2A23 /* en */,
-			);
-			name = SecondViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -382,9 +367,11 @@
 		A0B9CA9F15513FC800DB2A23 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JSONRequestExample/JSONRequestExample-Prefix.pch";
 				INFOPLIST_FILE = "JSONRequestExample/JSONRequestExample-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -393,9 +380,11 @@
 		A0B9CAA015513FC800DB2A23 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JSONRequestExample/JSONRequestExample-Prefix.pch";
 				INFOPLIST_FILE = "JSONRequestExample/JSONRequestExample-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
