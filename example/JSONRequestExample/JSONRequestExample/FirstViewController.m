@@ -37,6 +37,7 @@
     [super viewDidLoad];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"run" style:UIBarButtonItemStyleBordered target:self action:@selector(run:)];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"clear" style:UIBarButtonItemStyleBordered target:self action:@selector(clear:)];
+    [self setToolbarItems:[NSArray arrayWithObject:[[UIBarButtonItem alloc] initWithTitle:@"Upload" style:UIBarButtonItemStyleDone target:self action:@selector(upload:)]]];
 
 }
 
@@ -106,13 +107,17 @@
 #pragma mark - JSONRequestDelegate
 - (void)requestFinished:(JSONRequest *)request
 {
-    @synchronized(self.requests) {
-        NSInteger index = [self.requests indexOfObject:request];
-        if (index == NSNotFound) return;
-        [self.requests replaceObjectAtIndex:index withObject:[NSNumber numberWithDouble: -[request.sentDate timeIntervalSinceNow]]];
-        -- self.requestCount;
+    if ([request.HTTPMethod isEqualToString:@"GET"]) {
+        @synchronized(self.requests) {
+            NSInteger index = [self.requests indexOfObject:request];
+            if (index == NSNotFound) return;
+            [self.requests replaceObjectAtIndex:index withObject:[NSNumber numberWithDouble: -[request.sentDate timeIntervalSinceNow]]];
+            -- self.requestCount;
+        }
+        [self updateUI];
+    } else {
+        NSLog(@"request finished: %@", request.response.rootObject);
     }
-    [self updateUI];
 }
 
 - (void)requestFailed:(JSONRequest *)request
@@ -124,6 +129,28 @@
         -- self.requestCount;
     }
     [self updateUI];
+}
+
+#pragma mark - Action
+- (void)upload:(id)sender
+{
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.delegate = self;
+    [self presentModalViewController:imagePicker animated:YES];
+}
+
+#pragma mark - UIImagePickerController
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    JSONRequest *request = [JSONRequest requestWithURL:[NSURL URLWithString:@"http://localhost:4567/upload"]];
+    request.delegate = self;
+    request.HTTPMethod = @"POST";
+    request.postMethod = @"multipart";
+    [request setValue:UIImagePNGRepresentation(image) forParamKey:@"file"];
+    [request send];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 

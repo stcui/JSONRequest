@@ -1,0 +1,14 @@
+uploads/*
+*~
+.#*
+*.pbxuser
+*.mode1v3
+*.xcworkspace
+gen/
+xcuserdata
+.project
+.settings
+*.pyc
+.DS_Store
+build
+Build

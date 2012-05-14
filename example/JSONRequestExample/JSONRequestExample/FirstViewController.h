@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UITableViewController
+@interface FirstViewController : UITableViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end

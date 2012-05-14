@@ -93,9 +93,23 @@ static NSOperationQueue *s_requestQueue = nil;;
     [super dealloc];
 }
 
+- (NSData *)toData:(id)object
+{
+    if ([object isKindOfClass:[NSString class]]) {
+        return [object dataUsingEncoding:NSUTF8StringEncoding];
+    } else if ([object isKindOfClass:[NSNumber class]]) {
+        return [[object stringValue] dataUsingEncoding:NSUTF8StringEncoding];
+    } else if ([object isKindOfClass:[UIImage class]]) {
+        return UIImagePNGRepresentation(object);
+    } else if ([object isKindOfClass:[NSData class]]) {
+        return object;
+    }
+    return nil;
+}
+
 - (void)buildMultipartFormDataPostBody
 {
-    NSMutableString *result = [[NSMutableString alloc] initWithCapacity:512];
+    NSMutableData *result = [[NSMutableData alloc] initWithCapacity:512];
     
 	CFUUIDRef uuid = CFUUIDCreate(nil);
 	NSString *uuidString = [(NSString*)CFUUIDCreateString(nil, uuid) autorelease];
@@ -104,27 +118,37 @@ static NSOperationQueue *s_requestQueue = nil;;
 	
     [_request setValue:[NSString stringWithFormat:@"multipart/form-data; charset=%@; boundary=%@", @"UTF-8", stringBoundary] forHTTPHeaderField:@"Content-Type"];
 	
-	[result appendString:[NSString stringWithFormat:@"--%@\r\n",stringBoundary]];
-	
+	[result appendData:[self toData:[NSString stringWithFormat:@"--%@\r\n",stringBoundary]]];
 	// Adds post data
 	NSString *endItemBoundary = [NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary];
 	NSUInteger i=0;
     NSEnumerator *keyEnumerator = [_params keyEnumerator];
     NSInteger count = [_params count];
 	for (NSString *key in keyEnumerator) {
-		[result appendString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",key]];
-		[result appendString:[_params valueForKey:key]];
+        id value = [_params objectForKey:key];
+        NSString *filename = nil;
+        if ([value isKindOfClass:[UIImage class]]) {
+            filename = @"file";
+        } else if ([value isKindOfClass:[NSData class]]) {
+            filename = @"file";
+        }
+        if (filename) {
+            [result appendData:[self toData:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", key, filename]]];
+            [result appendData:[self toData:[NSString stringWithFormat:@"Content-Type: image/png\r\n\r\n"]]];
+        } else {
+            [result appendData:[self toData:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",key]]];
+        }
+        [result appendData:[self toData:value]];
 		++i;
 		if (i < count) { //Only add the boundary if this is not the last item in the post body
-			[result appendString:endItemBoundary];
+			[result appendData:[self toData: endItemBoundary]];
 		}
 	}
 	
-	[result appendString:[NSString stringWithFormat:@"\r\n--%@--\r\n",stringBoundary]];
+	[result appendData:[self toData:[NSString stringWithFormat:@"\r\n--%@--\r\n",stringBoundary]]];
     
     [_postData release];
-    _postData = [[NSData alloc] initWithBytes:[result cStringUsingEncoding:NSUTF8StringEncoding] length:[result length]];
-    [result release];
+    _postData = result;
 }
 
 - (void)buildParamString
