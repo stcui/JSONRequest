@@ -183,6 +183,8 @@ static NSOperationQueue *s_requestQueue = nil;;
         [self buildMultipartFormDataPostBody];
     } else {
         [self buildParamString];
+		[_postData release];
+		_postData = [[_paramString dataUsingEncoding:NSUTF8StringEncoding] retain];
     }
 }
 
