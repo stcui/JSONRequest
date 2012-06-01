@@ -11,6 +11,7 @@ static NSString *userAgent = nil;
 static NSOperationQueue *s_requestQueue = nil;;
 
 @interface JSONRequest ()
+@property (nonatomic, retain) NSError *error;
 - (void)finish;
 - (void)setResponse:(JSONResponse *)response;
 @end
@@ -328,7 +329,12 @@ static NSOperationQueue *s_requestQueue = nil;;
 {
     if (! [self isCancelled]) {
         @autoreleasepool {
-            [self setResponse:[JSONResponse responseWithData:_data]];
+            JSONResponse *response = [JSONResponse responseWithData:_data];
+            if (response.error) {
+                self.error = response.error;
+            } else {
+                [self setResponse:[JSONResponse responseWithData:_data]];
+            }
             [self.delegate performSelectorOnMainThread:@selector(requestFinished:) withObject:self waitUntilDone:YES];
         }
         [self finish];
